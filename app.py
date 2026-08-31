@@ -1,9 +1,14 @@
+import os
 import streamlit as st
 import numpy as np 
 import joblib
 
-scaler = joblib.load("Scalar.pkl")
-model = joblib.load("model.pkl")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE_DIR, "models", "model.pkl")
+scalar_path = os.path.join(BASE_DIR, "models", "Scalar.pkl")
+
+scaler = joblib.load(scalar_path)
+model = joblib.load(model_path)
 
 st.title("Real Estate Price Prediction App")
 
